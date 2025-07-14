@@ -34,6 +34,13 @@
                     const data = await response.json();
                     console.log("サーバーからのレスポンス:", data);
 
+                    if (data.user.username) {
+                        console.log("ログイン成功:", data);
+                        window.location.href = "{{url_for('user.home')}}";
+                    } else {
+                        console.error("ログイン失敗:", data);
+                    }
+
                 } catch (err) {
                     console.error("送信エラー:", err);
                 }

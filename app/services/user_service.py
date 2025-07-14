@@ -1,6 +1,7 @@
+from flask_login import login_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import db
 from app.models.user_model import User
-from werkzeug.security import generate_password_hash, check_password_hash
 
 class UserService:
     @staticmethod
@@ -8,6 +9,7 @@ class UserService:
         user = User.query.filter_by(username=username).first()
         if not user or not check_password_hash(user.password, password):
             raise ValueError("Invalid credentials")
+        login_user(user)
         return {"username": username}
 
     @staticmethod

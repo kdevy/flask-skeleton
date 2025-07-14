@@ -2,8 +2,9 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask
+from flask_login import LoginManager, login_user
 from app.models import db
-from app.models import user_model
+from app.models.user_model import User
 from app.views import user_bp
 
 env_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
@@ -24,6 +25,13 @@ def create_app(config=None):
         app.config.update(config)
 
     db.init_app(app)
+
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
 
     with app.app_context():
         db.create_all()

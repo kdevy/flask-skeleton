@@ -20,7 +20,7 @@ def create_app(config=None):
             dbName = os.getenv('DB_NAME')
         )
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    
+
     if config:
         app.config.update(config)
 

@@ -1,46 +1,65 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends "_base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
-</head>
+{% block title %}
+login
+{% endblock %}
 
-<body>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        {{ form.username.label }}: {{ form.username() }}<br>
-        {{ form.password.label }}: {{ form.password() }}<br>
-        {{ form.submit() }}
-    </form>
-    <a href="{{url_for('user.login')}}">login</a>
+{% block content %}
+<form action="" method="post" class="max-w-sm mx-auto p-6 bg-white shadow-md rounded space-y-4">
+    {{ form.hidden_tag() }}
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelector('input[value="Register"]').addEventListener('click', async function (e) {
-                const formData = new FormData(this.form);
-                e.preventDefault();
+    <div>
+        <label for="{{ form.username.id }}" class="block text-sm font-medium text-gray-700">
+            {{ form.username.label.text }}
+        </label>
+        {{ form.username(class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
+        focus:ring-blue-500 focus:border-blue-500") }}
+    </div>
 
-                try {
-                    const response = await fetch("{{url_for('user.register')}}", {
-                        method: "POST",
-                        body: formData,
-                    });
+    <div>
+        <label for="{{ form.password.id }}" class="block text-sm font-medium text-gray-700">
+            {{ form.password.label.text }}
+        </label>
+        {{ form.password(class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
+        focus:ring-blue-500 focus:border-blue-500") }}
+    </div>
 
-                    if (!response.ok) {
-                        throw new Error(`HTTPエラー: ${await response.text()}`);
-                    }
+    <div class="flex flex-col space-y-2">
+        {{ form.submit(class="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700
+        transition") }}
 
-                    const data = await response.json();
-                    console.log("サーバーからのレスポンス:", data);
+        <a href="{{ url_for('user.login') }}"
+            class="w-full text-center px-4 py-2 bg-gray-100 text-gray-700 font-semibold rounded hover:bg-gray-200 transition">
+            Login
+        </a>
+    </div>
+</form>
+{% endblock %}
 
-                } catch (err) {
-                    console.error("送信エラー:", err);
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector('input[value="Register"]').addEventListener('click', async function (e) {
+            const formData = new FormData(this.form);
+            e.preventDefault();
+
+            try {
+                const response = await fetch("{{url_for('user.register')}}", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTPエラー: ${await response.text()}`);
                 }
-            });
-        });
-    </script>
-</body>
 
-</html>
+                const data = await response.json();
+                console.log("サーバーからのレスポンス:", data);
+
+            } catch (err) {
+                console.error("送信エラー:", err);
+            }
+        });
+    });
+</script>
+{% endblock %}

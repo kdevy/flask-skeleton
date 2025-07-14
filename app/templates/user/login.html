@@ -9,9 +9,10 @@
 
 <body>
     <form action="" method="post">
-        <input type="button" value="Login">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }}: {{ form.username() }}<br>
+        {{ form.password.label }}: {{ form.password() }}<br>
+        {{ form.submit() }}
     </form>
     <a href="{{url_for('user.register')}}">register</a>
 

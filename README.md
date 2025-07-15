@@ -30,7 +30,13 @@ python -c "import secrets; print(secrets.token_hex(32))"
 5. Set up the database.<br>
 After creating a MySQL database, update the credentials in the `.env` file.
 
-6. Start the development server:<br>
+6. Install tailwindcss
+```bash
+npm install tailwindcss @tailwindcss/cli
+npx @tailwindcss/cli -i app/static/css/tailwindcss/source.css -o app/static/css/tailwindcss/dest.css --watch
+```
+
+7. Start the development server:<br>
 ```bash
 python run.py
 ```

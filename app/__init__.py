@@ -5,7 +5,6 @@ from flask import Flask
 from flask_login import LoginManager, login_user
 from app.models import db
 from app.models.user_model import User
-from app.views import user_bp
 
 env_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
 load_dotenv(env_file_path)
@@ -36,6 +35,9 @@ def create_app(config=None):
     with app.app_context():
         db.create_all()
 
+    from app.views import index_bp
+    from app.views import user_bp
+    app.register_blueprint(index_bp, url_prefix="/")
     app.register_blueprint(user_bp, url_prefix="/user")
 
     return app

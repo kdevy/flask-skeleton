@@ -1,9 +1,10 @@
 from flask import Blueprint
 from flask_login import login_required
-from app.views.login_view import LoginView
-from app.views.register_view import RegisterView
-from app.views.logout_view import LogoutView
-from app.views.home_view import HomeView
+from app.views.user.login_view import LoginView
+from app.views.user.register_view import RegisterView
+from app.views.user.logout_view import LogoutView
+from app.views.user.home_view import HomeView
+from app.views.index.index_view import IndexView
 
 user_bp = Blueprint("user", __name__, template_folder="../templates/user")
 
@@ -27,4 +28,10 @@ home_view = HomeView.as_view("home")
 home_view = login_required(home_view)
 user_bp.add_url_rule("/home" \
                     , view_func=home_view \
+                    , methods=["GET"])
+
+
+index_bp = Blueprint("index", __name__, template_folder="../templates/index")
+index_bp.add_url_rule("/" \
+                    , view_func=IndexView.as_view("index") \
                     , methods=["GET"])

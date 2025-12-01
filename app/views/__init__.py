@@ -5,6 +5,7 @@ from app.views.user.register_view import RegisterView
 from app.views.user.logout_view import LogoutView
 from app.views.user.home_view import HomeView
 from app.views.index.index_view import IndexView
+from app.views.index.hoge_view import HogeView
 
 user_bp = Blueprint("user", __name__, template_folder="../templates/user")
 
@@ -34,4 +35,7 @@ user_bp.add_url_rule("/home" \
 index_bp = Blueprint("index", __name__, template_folder="../templates/index")
 index_bp.add_url_rule("/" \
                     , view_func=IndexView.as_view("index") \
+                    , methods=["GET"])
+index_bp.add_url_rule("/hoge" \
+                    , view_func=HogeView.as_view("hoge") \
                     , methods=["GET"])

@@ -12,7 +12,7 @@ class LoginView(MethodView):
 
     def get(self):
         context = {"form": self.form}
-        return render_template("login.html", **context)
+        return render_template("user/login.html", **context)
 
     def post(self):
         data = None

@@ -27,6 +27,6 @@ def create_app(config=ProjectConfig):
     from app.views import index_bp
     app.register_blueprint(index_bp, url_prefix="/")
     from app.user import user_bp
-    app.register_blueprint(user_bp)
+    app.register_blueprint(user_bp, url_prefix="/user")
 
     return app

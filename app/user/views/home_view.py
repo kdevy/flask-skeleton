@@ -4,4 +4,4 @@ from flask.views import MethodView
 class HomeView(MethodView):
     def get(self):
         context = {}
-        return render_template("home.html", **context)
+        return render_template("user/home.html", **context)

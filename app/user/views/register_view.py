@@ -12,7 +12,7 @@ class RegisterView(MethodView):
 
     def get(self):
         context = {"form": self.form}
-        return render_template("register.html", **context)
+        return render_template("user/register.html", **context)
 
     def post(self):
         data = None

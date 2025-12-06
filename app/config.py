@@ -8,3 +8,5 @@ class ProjectConfig(BaseConfig):
     else:
         DEBUG = True
         TESTING = True
+
+    BABEL_TRANSLATION_DIRECTORIES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "translations")

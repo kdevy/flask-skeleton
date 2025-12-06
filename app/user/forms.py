@@ -1,29 +1,30 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+from flask_babel import lazy_gettext
 
 class LoginForm(FlaskForm):
     username = StringField(
-        'Username',
-        validators=[DataRequired(message="ユーザ名を入力してください")],
-        render_kw={"placeholder": "Username"}
+        lazy_gettext('Username'),
+        validators=[DataRequired(message=lazy_gettext("ユーザ名を入力してください"))],
+        render_kw={"placeholder": lazy_gettext("Username")}
     )
     password = PasswordField(
-        'Password',
-        validators=[DataRequired(message="パスワードを入力してください")],
-        render_kw={"placeholder": "Password"}
+        lazy_gettext('Password'),
+        validators=[DataRequired(message=lazy_gettext("パスワードを入力してください"))],
+        render_kw={"placeholder": lazy_gettext("Password")}
     )
-    submit = SubmitField('Login')
+    submit = SubmitField(lazy_gettext('Login'))
 
 class RegisterForm(FlaskForm):
     username = StringField(
-        'Username',
-        validators=[DataRequired("ユーザ名を入力してください")],
-        render_kw={"placeholder": "Username"}
+        lazy_gettext('Username'),
+        validators=[DataRequired(lazy_gettext("ユーザ名を入力してください"))],
+        render_kw={"placeholder": lazy_gettext("Username")}
     )
     password = PasswordField(
-        'Password',
-        validators=[DataRequired("パスワードを入力してください")],
-        render_kw={"placeholder": "Password"}
+        lazy_gettext('Password'),
+        validators=[DataRequired(lazy_gettext("パスワードを入力してください"))],
+        render_kw={"placeholder": lazy_gettext("Password")}
     )
-    submit = SubmitField('Register')
+    submit = SubmitField(lazy_gettext('Register'))

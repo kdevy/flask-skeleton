@@ -1,0 +1,67 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-12-06 19:19+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/user/forms.py:8 app/user/forms.py:10 app/user/forms.py:21
+#: app/user/forms.py:23
+msgid "Username"
+msgstr ""
+
+#: app/user/forms.py:9 app/user/forms.py:22
+msgid "ユーザ名を入力してください"
+msgstr ""
+
+#: app/user/forms.py:13 app/user/forms.py:15 app/user/forms.py:26
+#: app/user/forms.py:28
+msgid "Password"
+msgstr ""
+
+#: app/user/forms.py:14 app/user/forms.py:27
+msgid "パスワードを入力してください"
+msgstr ""
+
+#: app/user/forms.py:17 app/user/templates/user/login.html:4
+#: app/user/templates/user/register.html:33
+msgid "Login"
+msgstr ""
+
+#: app/user/forms.py:30 app/user/templates/user/login.html:35
+#: app/user/templates/user/register.html:4
+msgid "Register"
+msgstr ""
+
+#: app/user/services.py:12
+msgid "Invalid credentials"
+msgstr ""
+
+#: app/user/services.py:22
+msgid "Username and password are required"
+msgstr ""
+
+#: app/user/views/login_view.py:24 app/user/views/register_view.py:24
+msgid "Invalid form submission"
+msgstr ""
+
+#: app/user/views/login_view.py:27
+msgid "Logged in"
+msgstr ""
+
+#: app/user/views/register_view.py:27
+msgid "Registered"
+msgstr ""
+

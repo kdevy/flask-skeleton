@@ -2,6 +2,7 @@ from flask import jsonify, render_template
 from flask.views import MethodView
 from app.user.services import UserService
 from app.user.forms import RegisterForm
+from flask_babel import gettext
 
 class RegisterView(MethodView):
     form = None
@@ -20,9 +21,9 @@ class RegisterView(MethodView):
             if self.form.validate_on_submit():
                 data = self.form.data
             else:
-                raise ValueError("Invalid form submission")
+                raise ValueError(gettext("Invalid form submission"))
 
             new_user = UserService.register(data)
-            return jsonify({"message": "Registered", "user": new_user}), 201
+            return jsonify({"message": gettext("Registered"), "user": new_user}), 201
         except ValueError as e:
             return jsonify({"error": str(e)}), 400

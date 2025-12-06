@@ -2,6 +2,7 @@ from flask import jsonify, render_template
 from flask.views import MethodView
 from app.user.services import UserService
 from app.user.forms import LoginForm
+from flask_babel import gettext
 
 class LoginView(MethodView):
     form = None
@@ -20,9 +21,9 @@ class LoginView(MethodView):
             if self.form.validate_on_submit():
                 data = self.form.data
             else:
-                raise ValueError("Invalid form submission")
+                raise ValueError(gettext("Invalid form submission"))
 
             user = UserService.login(data.get("username"), data.get("password"))
-            return jsonify({"message": "Logged in", "user": user})
+            return jsonify({"message": gettext("Logged in"), "user": user})
         except ValueError as e:
             return jsonify({"error": self.form.errors}), 200

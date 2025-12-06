@@ -40,3 +40,19 @@ npx @tailwindcss/cli -i app/static/css/tailwindcss/source.css -o app/static/css/
 ```bash
 python run.py
 ```
+
+# Commands
+## babel
+```
+$ pybabel extract -F babel.cfg -o translations/messages.pot . -k lazy_gettext
+```
+
+```
+$ pybabel init -i translations/messages.pot -d translations -l en
+$ pybabel init -i translations/messages.pot -d translations -l ja
+```
+
+```
+$ pybabel compile -d translations -l en -f
+$ pybabel compile -d translations -l ja -f
+```

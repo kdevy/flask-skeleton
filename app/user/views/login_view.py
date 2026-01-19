@@ -26,4 +26,4 @@ class LoginView(MethodView):
             user = UserService.login(data.get("username"), data.get("password"))
             return jsonify({"message": gettext("Logged in"), "user": user})
         except ValueError as e:
-            return jsonify({"error": self.form.errors}), 200
+            return jsonify({"error": self.form.errors if len(self.form.errors) > 0 else str(e)}), 200
